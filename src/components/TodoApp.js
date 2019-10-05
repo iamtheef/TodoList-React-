@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import uuid from "uuid";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -7,14 +7,11 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import TodoList from "./TodoList";
 import TodoForm from "./TodoForm";
+import useLocalStorageState from "./Hooks/useLocalStorageState";
 
 function TodoApp() {
-  const initialTodos = [
-    { id: 1, task: "Clean Fishtank", completed: false },
-    { id: 2, task: "Buy Shoes", completed: true },
-    { id: 3, task: "Grow Beard", completed: false }
-  ];
-  const [todos, setTodos] = useState(initialTodos);
+  const initialTodos = [];
+  const [todos, setTodos] = useLocalStorageState("todos", initialTodos);
 
   const addTodo = newTodoText => {
     setTodos([...todos, { id: uuid(), task: newTodoText, completed: false }]);
