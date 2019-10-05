@@ -15,19 +15,30 @@ function TodoApp() {
     { id: 3, task: "Grow Beard", completed: false }
   ];
   const [todos, setTodos] = useState(initialTodos);
+
   const addTodo = newTodoText => {
     setTodos([...todos, { id: uuid(), task: newTodoText, completed: false }]);
   };
+
   const removeTodo = id => {
     const updatedTodos = todos.filter(todo => todo.id != id);
     setTodos(updatedTodos);
   };
+
   const toggleTodo = id => {
     const updatedTodos = todos.map(todo =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     );
     setTodos(updatedTodos);
   };
+
+  const updateTodo = (id, newTask) => {
+    const updatedTodos = todos.map(todo =>
+      todo.id === id ? { ...todo, task: newTask } : todo
+    );
+    setTodos(updatedTodos);
+  };
+
   return (
     <Paper
       style={{
@@ -46,7 +57,12 @@ function TodoApp() {
             </Toolbar>
           </AppBar>
           <TodoForm addTodo={addTodo} />
-          <TodoList todos={todos} remove={removeTodo} toggle={toggleTodo} />
+          <TodoList
+            todos={todos}
+            remove={removeTodo}
+            toggle={toggleTodo}
+            edit={updateTodo}
+          />
         </Grid>
       </Grid>
     </Paper>
