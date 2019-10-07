@@ -9,6 +9,7 @@
     "bootstrap": "^4.3.1",
     "jqeury": "0.0.1-security",
     "jquery": "^3.4.1",
+    "material-ui-popup-state": "^1.4.1",
     "popper.js": "^1.15.0",
     "react": "^16.9.0",
     "react-browser-router": "^2.1.2",
