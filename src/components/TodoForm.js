@@ -5,8 +5,11 @@ import useInputState from "./Hooks/useInputState";
 import { LanguageContext } from "./LanguageContext";
 
 function TodoForm({ addTodo }) {
+  //INITIALIZING HOOK
   const [value, handleChange, reset] = useInputState("");
+  const { language } = useContext(LanguageContext); // importing context
 
+  //WORDS
   const words = {
     english: {
       label: "Add New Todo"
@@ -16,7 +19,7 @@ function TodoForm({ addTodo }) {
     }
   };
 
-  const { language } = useContext(LanguageContext);
+  //grbbing the words
   const { label } = words[language];
 
   return (

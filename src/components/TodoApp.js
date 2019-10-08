@@ -13,6 +13,7 @@ import Select from "@material-ui/core/Select";
 import useLocalStorageState from "./Hooks/useLocalStorageState";
 
 function TodoApp() {
+  // LANGUAGE WORDS
   const words = {
     english: {
       header: "TODOS WITH HOOKS"
@@ -21,32 +22,33 @@ function TodoApp() {
       header: "TODOS CON GANCHOS"
     }
   };
+
+  //INITIALIZING HOOKS
   const { language, changeLanguage } = useContext(LanguageContext);
   const initialTodos = [];
   const [todos, setTodos] = useLocalStorageState("todos", initialTodos);
 
+  //FUNCTIONS
   const addTodo = newTodoText => {
     setTodos([...todos, { id: uuid(), task: newTodoText, completed: false }]);
   };
-
   const removeTodo = id => {
     const updatedTodos = todos.filter(todo => todo.id != id);
     setTodos(updatedTodos);
   };
-
   const toggleTodo = id => {
     const updatedTodos = todos.map(todo =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     );
     setTodos(updatedTodos);
   };
-
   const updateTodo = (id, newTask) => {
     const updatedTodos = todos.map(todo =>
       todo.id === id ? { ...todo, task: newTask } : todo
     );
     setTodos(updatedTodos);
   };
+
   const { header } = words[language];
 
   return (
