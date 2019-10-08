@@ -16,4 +16,4 @@ function useLocalStorageState(key, defaultVal) {
   }, [state]);
   return [state, setState];
 }
-export default useLocalStorageState;
+export { useLocalStorageState };

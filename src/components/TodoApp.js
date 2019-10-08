@@ -30,24 +30,24 @@ function TodoApp() {
   const { language, changeLanguage } = useContext(LanguageContext);
   const { header } = words[language];
   const styles = {
-    background: {
-      backgroundColor: isDark ? "black" : "white",
-      padding: 0,
-      margin: 0,
-      height: "100vh"
-    },
-    bar: {
-      backgroundColor: isDark ? "grey" : "primary",
-      height: "64px",
-      width: "100vw"
+    root: {
+      backgroundColor: isDark ? "#7baed1" : "#195ab5"
     }
   };
 
   return (
-    <Paper style={styles.background} elevation={0}>
+    <Paper
+      style={{
+        backgroundColor: isDark ? "#3f3f3f" : "white",
+        padding: 0,
+        margin: 0,
+        height: "100vh"
+      }}
+      elevation={0}
+    >
       <Grid container justify="center">
-        <AppBar position="static" style={styles.bar}>
-          <Toolbar style={{ justifyContent: "space-between" }}>
+        <AppBar position="static" style={styles.root}>
+          <Toolbar style={{ justifyContent: "space-between" }} color="inherit">
             <Typography color="inherit">{header}</Typography>
             <div>
               <Switch onChange={setTheme} />
@@ -55,7 +55,7 @@ function TodoApp() {
               <Select
                 value={language}
                 onChange={changeLanguage}
-                style={{ color: "white" }}
+                style={{ color: "inherit" }}
               >
                 <MenuItem value="english">English</MenuItem>
                 <MenuItem value="spanish">Spanish</MenuItem>
