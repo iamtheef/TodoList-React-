@@ -1,14 +1,17 @@
 import React from "react";
 // import "../style.css";
 import TodoApp from "./TodoApp";
-import { LanguageProvider } from "./LanguageContext";
+import { LanguageProvider } from "./Context/LanguageContext";
+import { ThemeProvider } from "./Context/ThemeContext";
 
 export default function App() {
   return (
     <div>
-      <LanguageProvider>
-        <TodoApp />
-      </LanguageProvider>
+      <ThemeProvider>
+        <LanguageProvider>
+          <TodoApp />
+        </LanguageProvider>
+      </ThemeProvider>
     </div>
   );
 }
