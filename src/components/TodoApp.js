@@ -8,10 +8,8 @@ import Grid from "@material-ui/core/Grid";
 import TodoList from "./TodoList";
 import TodoForm from "./TodoForm";
 import { LanguageContext } from "./LanguageContext";
-import Button from "@material-ui/core/Button";
-import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
+import Select from "@material-ui/core/Select";
 import useLocalStorageState from "./Hooks/useLocalStorageState";
 
 function TodoApp() {
@@ -50,40 +48,40 @@ function TodoApp() {
     setTodos(updatedTodos);
   };
   const { header } = words[language];
+
   return (
     <Paper
       style={{
         padding: 0,
         margin: 0,
-        height: "100uv",
-        backgroundColor: "white"
+        height: "100vh"
       }}
       elevation={0}
     >
       <Grid container justify="center">
+        <AppBar
+          color="primary"
+          position="static"
+          style={{
+            height: "64px",
+            width: "100vw"
+          }}
+        >
+          <Toolbar style={{ justifyContent: "space-between" }}>
+            <Typography color="inherit">{header}</Typography>
+            <div>
+              <Select
+                value={language}
+                onChange={changeLanguage}
+                style={{ color: "white" }}
+              >
+                <MenuItem value="english">English</MenuItem>
+                <MenuItem value="spanish">Spanish</MenuItem>
+              </Select>
+            </div>
+          </Toolbar>
+        </AppBar>
         <Grid item xs={11} md={8} lg={4}>
-          <AppBar color="primary" position="static" style={{ height: "64px" }}>
-            <Toolbar>
-              <PopupState variant="popover" popupId="demo-popup-menu">
-                {popupState => (
-                  <React.Fragment>
-                    <Button variant="contained" {...bindTrigger(popupState)}>
-                      Language
-                    </Button>
-                    <Menu {...bindMenu(popupState)}>
-                      <MenuItem onClick={changeLanguage("english")}>
-                        English
-                      </MenuItem>
-                      <MenuItem onClick={changeLanguage("spanish")}>
-                        Spanish
-                      </MenuItem>
-                    </Menu>
-                  </React.Fragment>
-                )}
-              </PopupState>
-              <Typography color="inherit">{header}</Typography>
-            </Toolbar>
-          </AppBar>
           <TodoForm addTodo={addTodo} />
           <TodoList
             todos={todos}
