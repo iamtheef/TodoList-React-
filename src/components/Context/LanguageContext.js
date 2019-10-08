@@ -9,7 +9,7 @@ export function LanguageProvider(props) {
   const [language, setLanguage] = useState(lang);
   const changeLanguage = e => setLanguage(e.target.value);
 
-  //update
+  //update!
   useEffect(() => {
     window.localStorage.setItem("language", JSON.stringify(language));
   });
