@@ -50,7 +50,7 @@ function TodoApp() {
           <Toolbar style={{ justifyContent: "space-between" }} color="inherit">
             <Typography color="inherit">{header}</Typography>
             <div>
-              <Switch onChange={setTheme} />
+              <Switch onChange={setTheme} checked={isDark} />
 
               <Select
                 value={language}
