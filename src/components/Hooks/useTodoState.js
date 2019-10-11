@@ -1,4 +1,4 @@
-import { useLocalStorageState } from "./useLocalStorageState";
+import useLocalStorageState from "./useLocalStorageState";
 import uuid from "uuid";
 
 export default initialTodos => {

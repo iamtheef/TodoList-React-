@@ -3,14 +3,15 @@ import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 import useInputState from "./Hooks/useInputState";
 import { LanguageContext } from "./Context/LanguageContext";
-import { TodosContext } from "./Context/TodosContext";
+import { FunctionContext } from "./Context/TodosContext";
+// import { TodosContext } from "./Context/TodosContext";
 
 function TodoForm() {
   //INITIALIZING HOOK
   const [value, handleChange, reset] = useInputState("");
   // importing context
   const { language } = useContext(LanguageContext);
-  const { addTodo } = useContext(TodosContext);
+  const { addTodo } = useContext(FunctionContext);
 
   //WORDS
   const words = {
